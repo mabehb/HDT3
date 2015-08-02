@@ -29,20 +29,21 @@ public class Hoja3 {
             try{
                 FileWriter editar = new FileWriter(numeros,true);
                 //se utiliza el metodo para generar numeros aleatorios de la clase Sorting
-                editar.write(sorting.numerosRandom()+" ");
+                editar.write(sorting.numerosRandom()+"\n");
                 editar.close();
             }
             catch (Exception e){
                 System.out.println ("Error al escribir");
             }
         }
-        //REVISAR LECTURA DE ARCHIVO PARA GUARDAR EN UN ARREGLO
         //se procede a extraer los numeros del archivo de texto
         try{
             BufferedReader br = new BufferedReader(new FileReader(numeros));
                 try {
+                    int z=0;
                     for(String line; (line = br.readLine()) != null; ){
-                        sorting.setString(line);
+                        sorting.setArreglos(z, Integer.parseInt(line));
+                        z++;
                     }
                 }
                 catch(IOException ex) {
@@ -54,9 +55,17 @@ public class Hoja3 {
             }
         
         //probando si se guardo el arreglo
+        /*int contador=0;
         for (int x=0; x<3000;x++){
-            System.out.println(sorting.getListaSelection(x));
-        }
+            //se imprime el elemento en esa posicion para cada lista (deben ser iguales)
+            System.out.println(sorting.getSelectionArray(x));
+            System.out.println(sorting.getInsertionArray(x));
+            System.out.println(sorting.getQuickArray(x));
+            System.out.println(sorting.getRadixArray(x));
+            contador++;
+            //tambien se imprime un contador para verificar que sean 3000 numeros
+            System.out.println("fue el elemento #: "+contador);
+        }*/
         
         //se llama dos veces a cada metodo, para medir el tiempo que cada sort tarda en ordenar y en recorrer al estar ya ordenado
         /*sorting.selectionSort();

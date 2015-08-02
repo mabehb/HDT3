@@ -11,20 +11,18 @@ package hoja3;
  */
 public class Sorting {
     //se almacenara una copia de los numeros aleatorios por cada sort a utilizar para ordenar
-    private int[] listaSelection;
-    private int[] listaInsertion;
-    private int[] listaQuick;
-    private int[] listaRadix;
-    //linea que contendra los numeros del archivo de texto para despues ingresarlos en los arreglos
-    private String linea;
+    private int[] selectionArray;
+    private int[] insertionArray;
+    private int[] quickArray;
+    private int[] radixArray;
     
     public Sorting(){
     //constructor de la clase Sorting
     //cada arreglo contredra 3000 numeros
-    listaSelection= new int[3000];
-    listaInsertion= new int[3000];
-    listaQuick= new int[3000];
-    listaRadix= new int[3000];
+    selectionArray= new int[3000];
+    insertionArray= new int[3000];
+    quickArray= new int[3000];
+    radixArray= new int[3000];
     }
     
     public int numerosRandom(){
@@ -33,27 +31,30 @@ public class Sorting {
         return numero;
     }
     
-    public void setString(String linea){
-      this.linea = linea;
+    public void setArreglos(int x, int z){
+    //setter para tener 4 copias de los numeros aleatorios
+        this.selectionArray[x]=z;
+        this.insertionArray[x]=z;
+        this.quickArray[x]=z;
+        this.radixArray[x]=z;
     }
     
-    public void setListaSelection(){
-        int z=0;
-        for (int x=0; x<linea.length();x++){
-            if (linea.charAt(x)!=32){
-                listaSelection[z]=x;
-                z++;
-            }
-            else{
-                
-            }
-        }
+    public int getSelectionArray(int x){
+        return selectionArray[x];
     }
     
-    //este getter es solo para comprobar que el arreglo se haya guardado, HAY QUE BORRARLO en cuanto funcione
-    public int getListaSelection(int x){
-        return listaSelection[x];
+    public int getInsertionArray(int x){
+        return insertionArray[x];
     }
+    
+    public int getQuickArray(int x){
+        return quickArray[x];
+    }
+    
+    public int getRadixArray(int x){
+        return radixArray[x];
+    }
+    
     public void selectionSort(Comparable[] list){
     
     }
