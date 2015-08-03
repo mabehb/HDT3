@@ -18,19 +18,19 @@ public class Sorting {
         return numero;
     }
     
-    public void selectionSort(){
+    public void selectionSort(Comparable[] list){
     
     }
     
-    public void insertionSort(){
+    public void insertionSort(Comparable[] list){
         
     }
     
-    public void quickSort(){
+    public void quickSort(Comparable[] list){
         
     }
     
-    public void radixSort(){
+    public void radixSort(Comparable[] list){
         
     }
 }
