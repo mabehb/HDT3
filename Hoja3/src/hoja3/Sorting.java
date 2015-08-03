@@ -55,19 +55,19 @@ public class Sorting {
         return radixArray[x];
     }
     
-    public void selectionSort(Comparable[] list){
+    public void selectionSort(){
     
     }
     
-    public void insertionSort(Comparable[] list){
+    public void insertionSort(){
         
     }
     
-    public void quickSort(Comparable[] list){
+    public void quickSort(){
         
     }
     
-    public void radixSort(Comparable[] list){
+    public void radixSort(){
         
     }
 }
