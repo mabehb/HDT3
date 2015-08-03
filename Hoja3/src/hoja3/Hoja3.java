@@ -17,6 +17,12 @@ public class Hoja3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //arrays de tipo numerales
+        ObjetoNumerales[] selectionArray = new ObjetoNumerales[3000];
+        ObjetoNumerales[] insertionArray = new ObjetoNumerales[3000];
+        ObjetoNumerales[] quickArray = new ObjetoNumerales[3000];
+        ObjetoNumerales[] radixArray = new ObjetoNumerales[3000];
+        
         // TODO code application logic here
         //Se crea un fichero para guardar 3000 numeros aleatorios
         File numeros= new File("numeros.txt");
@@ -39,10 +45,13 @@ public class Hoja3 {
         //se procede a extraer los numeros del archivo de texto
         try{
             BufferedReader br = new BufferedReader(new FileReader(numeros));
-                try {
+                try { //array de tipo numeral que implementa comparable
                     int z=0;
                     for(String line; (line = br.readLine()) != null; ){
-                        sorting.setArreglos(z, Integer.parseInt(line));
+                        selectionArray[z] = new ObjetoNumerales(Integer.parseInt(line));
+                        insertionArray[z] = new ObjetoNumerales(Integer.parseInt(line));
+                        quickArray[z] = new ObjetoNumerales(Integer.parseInt(line));
+                        radixArray[z] = new ObjetoNumerales(Integer.parseInt(line));
                         z++;
                     }
                 }
