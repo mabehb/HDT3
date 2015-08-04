@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author Ma. Belen
+ * @author Ma. Belen, Alejandro Rivera, Daniela Pocasangre, Juan Diego Benitez
  */
 public class Hoja3 {
 
@@ -18,11 +18,17 @@ public class Hoja3 {
      */
     public static void main(String[] args) {
         //arrays de tipo numerales
+        
         ObjetoNumerales[] selectionArray = new ObjetoNumerales[3000];
         ObjetoNumerales[] insertionArray = new ObjetoNumerales[3000];
         ObjetoNumerales[] quickArray = new ObjetoNumerales[3000];
         ObjetoNumerales[] radixArray = new ObjetoNumerales[3000];
-        
+        //Para que hagan sus pruebas
+        /*ObjetoNumerales[] selectionArray = new ObjetoNumerales[50];
+        ObjetoNumerales[] insertionArray = new ObjetoNumerales[50];
+        ObjetoNumerales[] quickArray = new ObjetoNumerales[50];
+        ObjetoNumerales[] radixArray = new ObjetoNumerales[50];
+        */
         // TODO code application logic here
         //Se crea un fichero para guardar 3000 numeros aleatorios
         File numeros= new File("numeros.txt");
@@ -31,6 +37,8 @@ public class Hoja3 {
         Sorting sorting = new Sorting();
         //este ciclo llena el archivo de texto
         for (int x=0; x<3000; x++){
+        //Para que hagan sus pruebas
+        //for (int x = 0; x<50; x++){
             //intenta editarse el archivo
             try{
                 FileWriter editar = new FileWriter(numeros,true);
@@ -80,7 +88,16 @@ public class Hoja3 {
         /*sorting.selectionSort();
         sorting.selectionSort();
         sorting.insertionSort();
-        sorting.insertionSort();
+        */
+        sorting.insertionSort(insertionArray);
+        System.out.println("Final: ");
+        //Para que hagan sus pruebas
+        //for (int g = 0; g<50; g++){
+        for (int g = 0; g<3000; g++){
+            System.out.print(insertionArray[g].getNumero() + " ");
+        }
+        
+        /*
         sorting.quickSort();
         sorting.quickSort();
         sorting.radixSort();
