@@ -26,6 +26,11 @@ public class ObjetoNumerales implements Comparable {
         if(numero>numanterior){ //compara numero actual con anterior
             resultado = 1;
         }
+        
+        if(numero==numanterior){ //compara si el numero actual es igual al anterior
+            resultado = 2;
+        }
+        
         else{
             resultado = 0;
         }
