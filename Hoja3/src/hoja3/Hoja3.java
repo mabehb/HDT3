@@ -90,11 +90,17 @@ public class Hoja3 {
         sorting.insertionSort();
         */
         sorting.insertionSort(insertionArray);
-        System.out.println("Final: ");
+        System.out.println("Final Insertion: ");
         //Para que hagan sus pruebas
         //for (int g = 0; g<50; g++){
         for (int g = 0; g<3000; g++){
             System.out.print(insertionArray[g].getNumero() + " ");
+        }
+       
+        sorting.radixSort(radixArray);
+        System.out.println("Final Radix: ");
+        for (int g = 0; g<3000; g++){
+            System.out.print(radixArray[g].getNumero() + " ");
         }
         
         /*
