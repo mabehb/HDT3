@@ -1,3 +1,5 @@
+package hoja3;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -91,14 +93,19 @@ public class Hoja3 {
         sorting.selectionSort();
         sorting.insertionSort();
         */
+        System.out.println("Random: ");
+        for (int g = 0; g<3000; g++){
+            System.out.print(quickArray[g].getNumero() + " ");
+        }
         
+        System.out.println();
         sorting.selectionSort(selectionArray);
         System.out.println("Final Selection: ");
         //for (int g = 0; g<50; g++){
         for (int g = 0; g<3000; g++){
             System.out.print(selectionArray[g].getNumero() + " ");
         }
-        
+            
         sorting.insertionSort(insertionArray);
         System.out.println("Final Insertion: ");
         //Para que hagan sus pruebas
@@ -106,14 +113,20 @@ public class Hoja3 {
         for (int g = 0; g<3000; g++){
             System.out.print(insertionArray[g].getNumero() + " ");
         }
+        
+        System.out.println();
+        sorting.quickSort(quickArray, 0, 2999);
+        System.out.println("Final Quick: ");
+        for (int g = 0; g<3000; g++){
+            System.out.print(quickArray[g].getNumero() + " ");
+        }
        
+        System.out.println();
         sorting.radixSort(radixArray);
         System.out.println("Final Radix: ");
-        //for (int g = 0; g<50; g++){
         for (int g = 0; g<3000; g++){
             System.out.print(radixArray[g].getNumero() + " ");
         }
-                    System.out.println();
 
         /*
         sorting.quickSort();

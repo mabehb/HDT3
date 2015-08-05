@@ -1,3 +1,4 @@
+package hoja3;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +20,6 @@ public class Sorting {
     
     public void selectionSort(Comparable[] Lista){
         int numActual, numero, numMenor=0, posicion=0;
-        System.out.println("\nLargo: " + Lista.length);
         for(int x=0; x<Lista.length; x++){
             numActual = ((ObjetoNumerales)Lista[x]).getNumero(); //numero en posicion x
             numero = numActual;
@@ -43,7 +43,6 @@ public class Sorting {
         int largoC = Cadena.length;
         int arreglo[] = new int[largoC];
         int Actual, Sig, Ant;
-        System.out.println("\nLargo: " + Cadena.length);
         for (int x = 1; x<Cadena.length; x++){
 		try{
                     
@@ -107,13 +106,41 @@ public class Sorting {
         
     }
     
-    public void quickSort(Comparable[] list){
+    public void quickSort(Comparable[] list, int primero, int ultimo){
+        if (list == null || list.length == 0) //si el arreglo no tiene elementos o ya no le quedan, termina el sort
+            return;
         
+        int indexP= primero+(ultimo-primero)/2; //posicion del objeto central del arreglo
+        Comparable p = list[indexP]; //objeto en la posicion central
+        
+        int i=primero; //i recorrera el arreglo ascendentemente
+        int j= ultimo; //j lo recorrera descendentemente
+        
+        while (i <= j) {//se ordenara hasta posicionar el pivote donde corresponde, en ese momento i>j
+            while (p.compareTo(list[i])==1) {//i va de izquierda a derecha, por lo tanto el objeto en i debe ser menor al pivote
+		i++;//mientras el objeto en i sea menor al pivote, se continuara recorriendo el arreglo hasta encontrar uno mayor al pivote
+            }//al encontrarlo, se sabe que ese objeto debe ser reposicionado
+            while (list[j].compareTo(p)==1) {//j recorre de derecha a izquierda, por lo tanto el objeto en j debe ser mayor al pivote
+		j--; //mientras el objeto en j sea mayor, se continuara recorriendo el arreglo hasta encontrar uno menor al pivote
+            }//al encontrarlo, se sabe que este tambien debe ser reposicionado
+            if (i <= j) {//mienras i no haya entrado en el rango de j y j no haya entrado en el rango de i, se hace el intercambio
+		ObjetoNumerales temp = (ObjetoNumerales)list[i];
+                int numj= ((ObjetoNumerales)list[j]).getNumero();
+		list[i] = new ObjetoNumerales (numj);
+		list[j] = temp;
+		i++;
+		j--;
+            }//se aumenta i y se disminuye j para saber donde comienza el nuevo arreglo
+        }
+        if (primero < j)//mientras j sea positivo, quiere decir que aun hay elementos sin ordenar a la izquierda
+            quickSort(list, primero, j);//se delimita un "subarreglo" desde el principio hasta la posicion j ya que despues de j los elementos estan ordenados
+	if (ultimo > i) //si todo fue ordenado hacia la izquierda, se procede a ordenar hacia la derecha
+            quickSort(list, i, ultimo); //se deliminta un subarreglo desde i hasta el final del arreglo (ya que antes de i todo esta ordenado)
     }
+
     
     public void radixSort(Comparable[] lista){
         ObjetoNumerales[] digitos = new ObjetoNumerales[lista.length]; //cadena que almacena los digitos
-        System.out.println("\nLargo: " + lista.length);
 
         for(int d=1; d<10000; d = d*10){ //for realizado para obtener digito en la i-esima posicion
             int counter = 0; //determina si se debe de seguir ordenando o si ya estan ordenados

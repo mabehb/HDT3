@@ -1,3 +1,4 @@
+package hoja3;
 /**
  * Clase que implementa a la interfaz Comparable. En esta se generan los metodos
  * que comparan numeros y generan objetos de arreglos.
