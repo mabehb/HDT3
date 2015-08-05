@@ -6,8 +6,10 @@ package hoja3;
  */
 
 /**
- * 
- * @author Ma. Belen, Alejandro Rivera, Daniela Pocasangre, Juan Diego Benitez
+ * Clase principal. En ella se crean los diferentes tipos de sort, que en este
+ * caso son Selection, Insertion, Quick y Radix, y se crea el metodo para generar
+ * los numeros al azar que en este caso son 3000 numeros de 1 a 10,000.
+ * @author Belen Hernandez, Alejandro Rivera, Daniela Pocasangre, Juan Diego Benitez
  */
 public class Sorting {
     //se almacenara una copia de los numeros aleatorios por cada sort a utilizar para ordenar
