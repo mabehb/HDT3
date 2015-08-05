@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hoja3;
 
 /**
  *
@@ -18,15 +17,33 @@ public class Sorting {
         return numero;
     }
     
-    public void selectionSort(Comparable[] list){
-    
+    public void selectionSort(Comparable[] Lista){
+        int numActual, numero, numMenor=0, posicion=0;
+        System.out.println("\nLargo: " + Lista.length);
+        for(int x=0; x<Lista.length; x++){
+            numActual = ((ObjetoNumerales)Lista[x]).getNumero(); //numero en posicion x
+            numero = numActual;
+            posicion = x;
+            for(int y=x+1; y<Lista.length; y++){ //para obtener el menor
+                int numero2 = ((ObjetoNumerales)Lista[y]).getNumero();   //numero en posicion y
+                if(numero2 < numero){   //si el de prueba es menor al fijo
+                    numMenor = numero2;  //el menor es el de la posicion x+1
+                    numero = ((ObjetoNumerales)Lista[y]).getNumero();  //el fijo se vuelve el de prueba
+                    posicion = y;
+                }
+            }
+            if(posicion != x){  //si la posicion es y
+                Lista[x] = new ObjetoNumerales(numMenor);  //en la posicion x se guarda el menor  
+                Lista[posicion]= new ObjetoNumerales(numActual); //se intercambian los numeros
+            }
+        }
     }
     
     public void insertionSort(Comparable[] Cadena){
         int largoC = Cadena.length;
         int arreglo[] = new int[largoC];
         int Actual, Sig, Ant;
-        System.out.println("Largo: " + Cadena.length);
+        System.out.println("\nLargo: " + Cadena.length);
         for (int x = 1; x<Cadena.length; x++){
 		try{
                     
@@ -98,7 +115,7 @@ public class Sorting {
         ObjetoNumerales[] digitos = new ObjetoNumerales[lista.length]; //cadena que almacena los digitos
         System.out.println("\nLargo: " + lista.length);
 
-        for(int d=1; d<10000; d = d*10){ //for realizado parao obtener digito en la i-esima posicion
+        for(int d=1; d<10000; d = d*10){ //for realizado para obtener digito en la i-esima posicion
             int counter = 0; //determina si se debe de seguir ordenando o si ya estan ordenados
             while(counter<lista.length){
                 for(int x=1; x<lista.length; x++){
