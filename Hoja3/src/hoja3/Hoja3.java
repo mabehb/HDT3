@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hoja3;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
- *
- * @author Ma. Belen, Alejandro Rivera, Daniela Pocasangre, Juan Diego Benitez
+ * Driver de Sorting.java. Aqui se crean los arreglos con los numeros al azar,
+ * y se mandan a llamar todos los tipos de ordenamiento (los diferentes sorts).
+ * @see Sorting
+ * @see ObjetoNumerales
+ * @author Belen Hernandez, Alejandro Rivera, Daniela Pocasangre, Juan Diego Benitez
  */
 public class Hoja3 {
 
@@ -24,11 +26,11 @@ public class Hoja3 {
         ObjetoNumerales[] quickArray = new ObjetoNumerales[3000];
         ObjetoNumerales[] radixArray = new ObjetoNumerales[3000];
         //Para que hagan sus pruebas
-        /*ObjetoNumerales[] selectionArray = new ObjetoNumerales[50];
-        ObjetoNumerales[] insertionArray = new ObjetoNumerales[50];
-        ObjetoNumerales[] quickArray = new ObjetoNumerales[50];
-        ObjetoNumerales[] radixArray = new ObjetoNumerales[50];
-        */
+        //ObjetoNumerales[] selectionArray = new ObjetoNumerales[50];
+        //ObjetoNumerales[] insertionArray = new ObjetoNumerales[50];
+        //ObjetoNumerales[] quickArray = new ObjetoNumerales[50];
+        //ObjetoNumerales[] radixArray = new ObjetoNumerales[50];
+        
         // TODO code application logic here
         //Se crea un fichero para guardar 3000 numeros aleatorios
         File numeros= new File("numeros.txt");
@@ -89,6 +91,14 @@ public class Hoja3 {
         sorting.selectionSort();
         sorting.insertionSort();
         */
+        
+        sorting.selectionSort(selectionArray);
+        System.out.println("Final Selection: ");
+        //for (int g = 0; g<50; g++){
+        for (int g = 0; g<3000; g++){
+            System.out.print(selectionArray[g].getNumero() + " ");
+        }
+        
         sorting.insertionSort(insertionArray);
         System.out.println("Final Insertion: ");
         //Para que hagan sus pruebas
@@ -99,10 +109,12 @@ public class Hoja3 {
        
         sorting.radixSort(radixArray);
         System.out.println("Final Radix: ");
+        //for (int g = 0; g<50; g++){
         for (int g = 0; g<3000; g++){
             System.out.print(radixArray[g].getNumero() + " ");
         }
-        
+                    System.out.println();
+
         /*
         sorting.quickSort();
         sorting.quickSort();
