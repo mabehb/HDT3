@@ -6,29 +6,42 @@ package hoja3;
  */
 
 /**
- *
+ * 
  * @author Ma. Belen, Alejandro Rivera, Daniela Pocasangre, Juan Diego Benitez
  */
 public class Sorting {
     //se almacenara una copia de los numeros aleatorios por cada sort a utilizar para ordenar
     
+    /**
+     * Metodo que genera numeros al azar. 
+     * @return numero: de tipo int. Es un numero al azar desde 1 a 10,000.
+     */
     public int numerosRandom(){
-    //metodo que genera un numero aleatorio entre 1 y 10000
+    	//metodo que genera un numero aleatorio entre 1 y 10000
         int numero=(int)(Math.random()*(10000-1+1)+1);
         return numero;
     }
     
+    /**
+     * Ordenamiento por medio de seleccion. Este tipo de ordenamiento compara el
+     * primer numero seleccionado con el menor de todos los numeros del arreglo
+     * y los intercambia de lugar. Continua haciendo esto con el siguiente numero
+     * y asi sucesivamente hasta ordenar todo el arreglo.
+     * @param Lista Este parametro contiene el arreglo a ordenar.
+     */
     public void selectionSort(Comparable[] Lista){
         int numActual, numero, numMenor=0, posicion=0;
+        System.out.println("\nLargo: " + Lista.length);
         for(int x=0; x<Lista.length; x++){
             numActual = ((ObjetoNumerales)Lista[x]).getNumero(); //numero en posicion x
             numero = numActual;
             posicion = x;
             for(int y=x+1; y<Lista.length; y++){ //para obtener el menor
                 int numero2 = ((ObjetoNumerales)Lista[y]).getNumero();   //numero en posicion y
-                if(numero2 < numero){   //si el de prueba es menor al fijo
+                //numero2 < numero
+                if(Lista[x].compareTo(Lista[y])==1){   //si el de prueba es menor al fijo
                     numMenor = numero2;  //el menor es el de la posicion x+1
-                    numero = ((ObjetoNumerales)Lista[y]).getNumero();  //el fijo se vuelve el de prueba
+                    Lista[x] = new ObjetoNumerales(numero2);//el fijo se vuelve el de prueba
                     posicion = y;
                 }
             }
@@ -39,6 +52,13 @@ public class Sorting {
         }
     }
     
+    /**
+     * Ordenamiento por medio de insercion. Este tipo de ordenamiento compara
+     * el segundo numero del arreglo con el primero y lo inserta en la posicion
+     * deseada (de menor a mayor), luego compara el tercer numero con los otros
+     * para saber donde hay que insertarlo y asi sucesivamente.
+     * @param Cadena Este parametro contiene el arreglo a ordenar.
+     */
     public void insertionSort(Comparable[] Cadena){
         int largoC = Cadena.length;
         int arreglo[] = new int[largoC];
@@ -106,6 +126,12 @@ public class Sorting {
         
     }
     
+    /**
+     * Ordenamiento por medio de un pivote. Se selecciona un numero al azar y se ordenan los demas numeros 
+     * ya sean mayores o menores a este. Luego se selecciona otro pivote y se realiza lo mismo hasta
+     * ordenar todo el arreglo.
+     * @param list Este parametro contiene el arreglo a ordenar.
+     */
     public void quickSort(Comparable[] list, int primero, int ultimo){
         if (list == null || list.length == 0) //si el arreglo no tiene elementos o ya no le quedan, termina el sort
             return;
@@ -138,7 +164,13 @@ public class Sorting {
             quickSort(list, i, ultimo); //se deliminta un subarreglo desde i hasta el final del arreglo (ya que antes de i todo esta ordenado)
     }
 
-    
+    /**
+     * Ordenamiento por medio de comparacion de digitos. Este tipo de ordenamiento
+     * compara los digitos de la i-esima posicion de cada numero del arreglo 
+     * y los ordena de menor a mayor, luego hace lo mismo con el siguiente
+     * digito de cada numero y asi sucesivamente.
+     * @param lista Este parametro contiene el arreglo a ordenar.
+     */
     public void radixSort(Comparable[] lista){
         ObjetoNumerales[] digitos = new ObjetoNumerales[lista.length]; //cadena que almacena los digitos
 
