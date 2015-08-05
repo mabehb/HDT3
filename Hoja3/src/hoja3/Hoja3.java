@@ -27,11 +27,6 @@ public class Hoja3 {
         ObjetoNumerales[] insertionArray = new ObjetoNumerales[3000];
         ObjetoNumerales[] quickArray = new ObjetoNumerales[3000];
         ObjetoNumerales[] radixArray = new ObjetoNumerales[3000];
-        //Para que hagan sus pruebas
-        //ObjetoNumerales[] selectionArray = new ObjetoNumerales[50];
-        //ObjetoNumerales[] insertionArray = new ObjetoNumerales[50];
-        //ObjetoNumerales[] quickArray = new ObjetoNumerales[50];
-        //ObjetoNumerales[] radixArray = new ObjetoNumerales[50];
         
         // TODO code application logic here
         //Se crea un fichero para guardar 3000 numeros aleatorios
@@ -75,19 +70,6 @@ public class Hoja3 {
             Logger.getLogger(Hoja3.class.getName()).log(Level.SEVERE, null, ex);
             }
         
-        //probando si se guardo el arreglo
-        /*int contador=0;
-        for (int x=0; x<3000;x++){
-            //se imprime el elemento en esa posicion para cada lista (deben ser iguales)
-            System.out.println(sorting.getSelectionArray(x));
-            System.out.println(sorting.getInsertionArray(x));
-            System.out.println(sorting.getQuickArray(x));
-            System.out.println(sorting.getRadixArray(x));
-            contador++;
-            //tambien se imprime un contador para verificar que sean 3000 numeros
-            System.out.println("fue el elemento #: "+contador);
-        }*/
-        
         //se llama dos veces a cada metodo, para medir el tiempo que cada sort tarda en ordenar y en recorrer al estar ya ordenado
         /*sorting.selectionSort();
         sorting.selectionSort();
@@ -108,8 +90,6 @@ public class Hoja3 {
             
         sorting.insertionSort(insertionArray);
         System.out.println("Final Insertion: ");
-        //Para que hagan sus pruebas
-        //for (int g = 0; g<50; g++){
         for (int g = 0; g<3000; g++){
             System.out.print(insertionArray[g].getNumero() + " ");
         }
