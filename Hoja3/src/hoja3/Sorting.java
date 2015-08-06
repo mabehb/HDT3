@@ -33,7 +33,6 @@ public class Sorting {
      */
     public void selectionSort(Comparable[] Lista){
         int numActual, numero, numMenor=0, posicion=0;
-        System.out.println("\nLargo: " + Lista.length);
         for(int x=0; x<Lista.length; x++){
             numActual = ((ObjetoNumerales)Lista[x]).getNumero(); //numero en posicion x
             numero = numActual;
@@ -62,70 +61,48 @@ public class Sorting {
      * @param Cadena Este parametro contiene el arreglo a ordenar.
      */
     public void insertionSort(Comparable[] Cadena){
-        int largoC = Cadena.length;
-        int arreglo[] = new int[largoC];
         int Actual, Sig, Ant;
-        for (int x = 1; x<Cadena.length; x++){
-		try{
-                    
-                    Actual = ((ObjetoNumerales)Cadena[x]).getNumero();
-                    Sig = ((ObjetoNumerales)Cadena[x+1]).getNumero();
-                    if(Cadena[x].compareTo(Cadena[x+1])==1){
-                            Cadena[x+1] = new ObjetoNumerales(Actual);
-                            if (x==0){
-                                    Cadena[x] = new ObjetoNumerales(Sig);
+        for (int x = 1; x<Cadena.length-1; x++){ //Se recorre todo el arreglo
+            Actual = ((ObjetoNumerales)Cadena[x]).getNumero(); //Tomamos el valor del primer elemento
+            Sig = ((ObjetoNumerales)Cadena[x+1]).getNumero(); //Tomamos el valor del segundo elemento
+            if(Cadena[x].compareTo(Cadena[x+1])==1){ //Si el primer elemento es mayor que el segundo
+                Cadena[x+1] = new ObjetoNumerales(Actual); //Se intercambian los elementos
+                if (x==0){ //Este condicional es porque no se puede tomar el anterior, daria un Outofbounds
+                        Cadena[x] = new ObjetoNumerales(Sig);
+                }
+                else{
+                    Ant = ((ObjetoNumerales)Cadena[x-1]).getNumero(); //Guardamos el numero anterior al actual
+                    if (Cadena[x+1].compareTo(Cadena[x-1])==1){ //Cadena[x+1] es Temp; Cadena[x-1] es Act
+                            Cadena[x] = new ObjetoNumerales(Sig); //Si el Temporal es mayor que el anterior, se intercambian los elmentos
+                            Cadena[x+1] = new ObjetoNumerales(Actual); //
+                    }
+
+                    if (Cadena[x-1].compareTo(Cadena[x])==1){ //Cadena[x] es ahora nuestro nuevo siguiente
+                        //Si el anterior es mayor que el actual, hay que buscar la posicion del actual hasta donde le corresponda
+                        int y = x; //Vamos a recorrer para atras los elementos que ya llevamos recorridos
+                        while (Cadena[y-1].compareTo(Cadena[y])==1){ //El algoritmo es el mismo
+                            Cadena[y] = new ObjetoNumerales(Ant);
+                            if(y!=1){
+                                Ant = ((ObjetoNumerales)Cadena[y-2]).getNumero(); //era 2
                             }
-                            else{
-                                    Ant = ((ObjetoNumerales)Cadena[x-1]).getNumero();
-                                    if (Cadena[x+1].compareTo(Cadena[x-1])==1){ //Cadena[x+1] es Temp; Cadena[x-1] es Temp2
-                                            Cadena[x] = new ObjetoNumerales(Sig);
-                                            Cadena[x+1] = new ObjetoNumerales(Actual);
-
-                                    }
-
-                                    //if (Ant>Sig){
-                                    if (Cadena[x-1].compareTo(Cadena[x])==1){ //Cadena[x] es ahora nuestro nuevo siguiente
-                                            int y = x;
-                                            //while (Ant>Sig){
-                                            while (Cadena[y-1].compareTo(Cadena[y])==1){
-                                                    Cadena[y] = new ObjetoNumerales(Ant);
-                                                    if(y!=1){
-                                                            Ant = ((ObjetoNumerales)Cadena[y-2]).getNumero(); //era 2
-                                                    }
-                                                    if (y==1){
-                                                            if(Ant>Sig){
-                                                            //if(Cadena[y].compareTo(Cadena[y-1])>0){ <---Averiguar ant y sig
-                                                                    Cadena[y-1] = new ObjetoNumerales(Sig);
-                                                            }
-                                                            else if (Sig>Ant){
-                                                                    Cadena[y] = new ObjetoNumerales(Sig);
-                                                            }
-                                                            break;
-
-                                                    }
-                                            Cadena[y-1] = new ObjetoNumerales(Sig);
-                                            y--;
-                                            }
-
-                                            }
-                                    }
-
+                            if (y==1){
+                                if(Ant>Sig){
+                                    Cadena[y-1] = new ObjetoNumerales(Sig);
+                                }
+                                else if (Sig>Ant){
+                                    Cadena[y] = new ObjetoNumerales(Sig);
+                                }
+                                break;
                             }
-                    //Este pareciera estar de mas porque funciona si se lo quitamos jaja
-                    else if (Cadena[x+1].compareTo(Cadena[x])==1){
-                            Cadena[x] = new ObjetoNumerales(Actual);
-                            Cadena[x+1] = new ObjetoNumerales(Sig);
+                        Cadena[y-1] = new ObjetoNumerales(Sig);
+                        y--; //Retrocedemos una posicion
+                        }
+
                     }
                 }
-                   
-		catch (Exception e){
-			System.out.println("e");
-		}
 
-		
-
+            }
 	}
-        
     }
     
     /**
@@ -176,7 +153,7 @@ public class Sorting {
     public void radixSort(Comparable[] lista){
         ObjetoNumerales[] digitos = new ObjetoNumerales[lista.length]; //cadena que almacena los digitos
 
-        for(int d=1; d<10000; d = d*10){ //for realizado para obtener digito en la i-esima posicion
+        for(int d=1; d<100000; d = d*10){ //for realizado para obtener digito en la i-esima posicion
             int counter = 0; //determina si se debe de seguir ordenando o si ya estan ordenados
             while(counter<lista.length){
                 for(int x=1; x<lista.length; x++){
